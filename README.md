@@ -82,7 +82,8 @@ A função `estimar()` é exportada isolada, então dá pra testar sem montar o 
 Marcadas no código como `TODO produção`:
 
 - [ ] `og:image` com foto real de obra (1200×630) e favicon
-- [ ] `NEXT_PUBLIC_SITE_URL` com o domínio definitivo (usado em canonical e OG)
+- [ ] `NEXT_PUBLIC_SITE_URL` com o domínio definitivo, **com `https://` na frente** (usado em canonical e OG).
+      Se estiver vazia ou inválida, o site cai no domínio de produção da Vercel e depois no fallback — o build não quebra.
 - [ ] Lista oficial de endereços por estado (CE·MA·PI·RN) — pendente com a Izabel
 - [ ] Confirmar e-mail comercial oficial e o número de WhatsApp definitivo
 - [ ] Link real da ficha do Google Meu Negócio (`empresa.linkGoogle`)

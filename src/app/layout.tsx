@@ -17,7 +17,31 @@ const inter = Inter({
 });
 
 // TODO produção: trocar pelo domínio definitivo antes de publicar.
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ecosolcomercioeservicos.com.br";
+// Ordem: variável explícita → domínio de produção da Vercel → fallback.
+// `||` (e não `??`) de propósito: na Vercel a variável pode chegar como string vazia.
+const FALLBACK_URL = "https://ecosolcomercioeservicos.com.br";
+
+function resolveSiteUrl(): string {
+  const candidatos = [
+    process.env.NEXT_PUBLIC_SITE_URL,
+    process.env.VERCEL_PROJECT_PRODUCTION_URL && `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`,
+    process.env.VERCEL_URL && `https://${process.env.VERCEL_URL}`,
+    FALLBACK_URL,
+  ];
+
+  for (const candidato of candidatos) {
+    const valor = candidato?.trim();
+    if (!valor) continue;
+    try {
+      return new URL(valor).toString();
+    } catch {
+      // valor inválido (ex.: domínio sem protocolo) — tenta o próximo
+    }
+  }
+  return FALLBACK_URL;
+}
+
+const SITE_URL = resolveSiteUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
