@@ -9,11 +9,11 @@ export function Footer() {
           <div>
             <a href="#" className="f-logo">
               <Image
-                src="/logo-ecosol.png"
-                alt="EcoSol — Comércio e Serviços Fotovoltaico"
-                width={197}
-                height={96}
-                style={{ height: 54, width: "auto", display: "block" }}
+                src="/logo-ecosol-selo.png"
+                alt="EcoSol — Comércio e Serviços Fotovoltaicos"
+                width={524}
+                height={556}
+                style={{ height: 88, width: "auto", display: "block" }}
               />
             </a>
             <p className="f-tag">A gente assina o que promete.</p>

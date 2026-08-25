@@ -984,9 +984,6 @@
   }
   .f-logo {
     display: inline-block;
-    background: #fff;
-    border-radius: 14px;
-    padding: 0.55rem 0.85rem;
   }
   .f-tag {
     font-family: var(--fd);
