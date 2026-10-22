@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script"
 import { Inter, Sora } from "next/font/google";
 import "./globals.css";
 
@@ -70,7 +71,19 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" className={`${sora.variable} ${inter.variable}`}>
-      <body>{children}</body>
+      <body>{children}
+      <Script
+            src="https://www.googletagmanager.com/gtag/js?id=AW-18474933442"
+            strategy="afterInteractive"
+          />
+          <Script id="google-ads" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-18474933442');
+            `}
+          </Script></body>
     </html>
   );
 }
